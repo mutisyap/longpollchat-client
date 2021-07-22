@@ -1,0 +1,17 @@
+version: "3.2"
+services:
+    longpollchat-web:
+        image:  pmutisya/longpollchat-web:latest
+        volumes: 
+            - ./nginx.conf:/etc/nginx/nginx.conf
+        ports: 
+            - 10080:80
+        restart: always
+    
+    longpollchat-server:
+        image: pmutisya/longpollchat-server:latest
+        environment:
+            - "TZ=Africa/Nairobi"
+        ports:
+            - 18080:8080
+        restart: always
